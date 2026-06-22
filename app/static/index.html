@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A small mathematical agent that understands your request and uses a calculator tool."
+    />
+    <title>Calculator Agent</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2224%22 fill=%22%23d6ff45%22/><text x=%2250%22 y=%2268%22 text-anchor=%22middle%22 font-size=%2260%22 fill=%22%230a0b0c%22>Σ</text></svg>"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <main class="shell">
+      <nav class="topbar">
+        <a class="brand" href="/" aria-label="Calculator Agent home">
+          <span class="brand-mark">∑</span>
+          <span>Calculator Agent</span>
+        </a>
+        <div class="status"><span></span> Agent online</div>
+      </nav>
+
+      <section class="hero">
+        <div class="eyebrow">Natural language → precise answers</div>
+        <h1>Math, without the<br /><em>mental overhead.</em></h1>
+        <p>
+          Tell the agent what you need. It identifies the task, chooses the
+          calculator tool, and shows its work.
+        </p>
+      </section>
+
+      <section class="workspace" aria-label="Calculator workspace">
+        <form id="calculator-form">
+          <label for="query">What should I calculate?</label>
+          <div class="input-row">
+            <input
+              id="query"
+              name="query"
+              type="text"
+              autocomplete="off"
+              placeholder="e.g. calculate 20% of 8500"
+              maxlength="500"
+              required
+            />
+            <button id="submit-button" type="submit">
+              <span>Calculate</span>
+              <span class="arrow">↗</span>
+            </button>
+          </div>
+        </form>
+
+        <div class="suggestions" aria-label="Example calculations">
+          <span>Try</span>
+          <button type="button" data-query="calculate 20% of 8500">20% of 8500</button>
+          <button type="button" data-query="what is (12 + 8) * 3?">(12 + 8) × 3</button>
+          <button type="button" data-query="square root of 144">√144</button>
+        </div>
+
+        <div id="result" class="result is-empty" aria-live="polite">
+          <div class="empty-state">
+            <span class="empty-icon">⌁</span>
+            <p>Your agent’s reasoning will appear here.</p>
+          </div>
+
+          <div class="result-content">
+            <div class="reasoning">
+              <div class="step">
+                <span class="step-number">01</span>
+                <div>
+                  <span class="step-label">Understood task</span>
+                  <strong id="task-output">—</strong>
+                </div>
+              </div>
+              <div class="connector"></div>
+              <div class="step">
+                <span class="step-number">02</span>
+                <div>
+                  <span class="step-label">Selected tool</span>
+                  <strong id="tool-output">—</strong>
+                </div>
+              </div>
+              <div class="connector"></div>
+              <div class="step">
+                <span class="step-number">03</span>
+                <div>
+                  <span class="step-label">Expression</span>
+                  <strong id="expression-output">—</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="answer-card">
+              <span class="answer-label">Answer</span>
+              <strong id="answer-output">—</strong>
+              <span id="error-output" class="error-message"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <span>Calculator Agent · Prototype v1</span>
+        <a href="/docs">API documentation ↗</a>
+      </footer>
+    </main>
+  </body>
+</html>
