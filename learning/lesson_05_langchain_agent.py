@@ -79,8 +79,7 @@ print(result["messages"][-1].content)
 
 # Cmd + / (macOS)
 # “Python supplies the calculator and the conversation loop. OpenAI supplies the language model.
-# LangChain manages the model’s tool requests
-# and results. Our message list supplies the earlier conversation as context.”
+# LangChain manages the model’s tool requests and results. Our message list supplies the earlier conversation as context.”
 
 # You have built a small agent that can answer, ask for clarification, or request a tool.
 # Its conversation history currently lives in the running program; it disappears when the program closes.
